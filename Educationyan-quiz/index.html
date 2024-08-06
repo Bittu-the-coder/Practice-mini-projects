@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educationyan Quiz</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="start-screen ">
+            <h1 class="heading">Educationyan Quiz</h1>
+            <div class="settings">
+                <label for="num-questions">Number of Questions</label>
+                <select name="" id="numQuestions">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                </select>
+                <label for="category">Select category</label>
+                <select name="" id="category">
+                    <option value="0">Select</option>
+                    <option value="10">Math</option>
+                    <option value="20">Science</option>
+                    <option value="30">Mix</option>
+
+                </select>
+                <label for="difficulty">Difficulty</label>
+                <select name="" id="difficulty">
+                    <option value="0">Select</option>
+                    <option value="10">Easy</option>
+                    <option value="20">Medium</option>
+                    <option value="30">Hard</option>
+
+                </select>
+                <label for="time">Time per question</label>
+                <select name="" id="time">
+                    <option value="30">30 seconds</option>
+                    <option value="60">1 minutes</option>
+                    <option value="120">2 minutes</option>
+                    <option value="180">3 minutes</option>
+                    <option value="240">4 minutes</option>
+                    <option value="300">5 minutes</option>
+
+                </select>
+            </div>
+            <button class="btn start">Start Quiz</button>
+        </div>
+        <div class="quiz hide">
+            <div class="timer">
+                <div class="progress">
+                    <div class="progress-bar"></div>
+                    <span class="progress-text"></span>
+                </div>
+            </div>
+            <div class="question-wrapper ">
+                <div class="number">
+                    Question <span class="current">1</span>
+                    <span class="total">/60</span>
+                </div>
+                <div class="question">
+                    <img src="./Questions/20.PNG" alt="">
+                </div>
+                <div class="answer-wrapper">
+                    <div class="answer">
+                        <span class="text">Option A</span>
+                        <span class="checkbox">
+                            <span class="icon">✔</span>
+                        </span>
+                    </div>
+                    <div class="answer ">
+                        <span class="text">Option B</span>
+                        <span class="checkbox">
+                            <span class="icon">✔</span>
+                        </span>
+                    </div>
+                    <div class="answer ">
+                        <span class="text">Option C</span>
+                        <span class="checkbox">
+                            <span class="icon">✔</span>
+                        </span>
+                    </div>
+                    <div class="answer ">
+                        <span class="text">Option D</span>
+                        <span class="checkbox">
+                            <span class="icon">✔</span>
+                        </span>
+                    </div>
+
+                </div>
+
+            </div>
+            <div class="btns">
+                <button class="btn submit" disabled>Submit</button>
+                <button class="btn next">Next</button>
+                <button class="btn final-submit hide">Final Submit</button>
+            </div>
+        </div>
+        <div class="end-screen hide">
+            <h1 class="heading">Educationyan Quiz</h1>
+            <div class="score">
+                <span class="score-text">Your Score:</span>
+                <div>
+                    <span class="final-score">0</span>
+                    <span class="total-score">/60</span>
+                </div>
+            </div>
+            <button class="btn restart">Restart Quiz</button>
+        </div>
+
+
+    </div>
+    <script src="quizQues.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
