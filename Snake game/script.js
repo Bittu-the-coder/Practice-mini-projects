@@ -16,7 +16,6 @@ const board = document.getElementById("board");
 // Game Functions
 function main(ctime) {
   window.requestAnimationFrame(main);
-  // console.log(ctime)
   if ((ctime - lastPaintTime) / 1000 < 1 / speed) {
     return;
   }
@@ -25,13 +24,11 @@ function main(ctime) {
 }
 
 function isCollide(snake) {
-  // If you bump into yourself
   for (let i = 1; i < snakeArr.length; i++) {
     if (snake[i].x === snake[0].x && snake[i].y === snake[0].y) {
       return true;
     }
   }
-  // If you bump into the wall
   if (
     snake[0].x >= 18 ||
     snake[0].x <= 0 ||
@@ -40,12 +37,10 @@ function isCollide(snake) {
   ) {
     return true;
   }
-
   return false;
 }
 
 function gameEngine() {
-  // Part 1: Updating the snake array & Food
   if (isCollide(snakeArr)) {
     gameOverSound.play();
     musicSound.pause();
@@ -55,10 +50,9 @@ function gameEngine() {
     musicSound.play();
     score = 0;
   }
-  // if snake eaten the food, increment in the score and regenrate the food
+
   if (snakeArr[0].y === food.y && snakeArr[0].x === food.x) {
     foodSound.play();
-
     score += 5;
     if (score > highscoreval) {
       highscoreval = score;
@@ -66,7 +60,7 @@ function gameEngine() {
       document.getElementById("highscoreBox").innerHTML =
         "Highscore: " + highscoreval;
     }
-    document.getElementById("scoreBox").innerHTML = "Score:" + score;
+    document.getElementById("scoreBox").innerHTML = "Score: " + score;
     snakeArr.unshift({
       x: snakeArr[0].x + inputDir.x,
       y: snakeArr[0].y + inputDir.y,
@@ -79,7 +73,6 @@ function gameEngine() {
     };
   }
 
-  //moving the snake
   for (let i = snakeArr.length - 2; i >= 0; i--) {
     snakeArr[i + 1] = { ...snakeArr[i] };
   }
@@ -87,8 +80,6 @@ function gameEngine() {
   snakeArr[0].x += inputDir.x;
   snakeArr[0].y += inputDir.y;
 
-  // Part 2: Display the snake and Food
-  // Display the snake
   board.innerHTML = "";
   snakeArr.forEach((e, index) => {
     let snakeElement = document.createElement("div");
@@ -102,7 +93,7 @@ function gameEngine() {
     }
     board.appendChild(snakeElement);
   });
-  // Display the food
+
   let foodElement = document.createElement("div");
   foodElement.style.gridRowStart = food.y;
   foodElement.style.gridColumnStart = food.x;
@@ -110,7 +101,6 @@ function gameEngine() {
   board.appendChild(foodElement);
 }
 
-//Main logic
 musicSound.play();
 let highscore = localStorage.getItem("highscore");
 if (highscore === null) {
@@ -123,30 +113,40 @@ if (highscore === null) {
 
 window.requestAnimationFrame(main);
 window.addEventListener("keydown", (e) => {
-  inputDir = { x: 0, y: 1 }; //start the game
+  inputDir = { x: 0, y: 1 };
   moveSound.play();
   switch (e.key) {
     case "ArrowUp":
-      console.log("ArrowUp");
       inputDir.x = 0;
       inputDir.y = -1;
       break;
     case "ArrowDown":
-      console.log("ArrowDown");
       inputDir.x = 0;
       inputDir.y = 1;
       break;
     case "ArrowLeft":
-      console.log("ArrowLeft");
       inputDir.x = -1;
       inputDir.y = 0;
       break;
     case "ArrowRight":
-      console.log("ArrowRight");
       inputDir.x = 1;
       inputDir.y = 0;
       break;
-    default:
-      break;
   }
+});
+
+document.getElementById("up").addEventListener("click", () => {
+  inputDir = { x: 0, y: -1 };
+});
+
+document.getElementById("down").addEventListener("click", () => {
+  inputDir = { x: 0, y: 1 };
+});
+
+document.getElementById("left").addEventListener("click", () => {
+  inputDir = { x: -1, y: 0 };
+});
+
+document.getElementById("right").addEventListener("click", () => {
+  inputDir = { x: 1, y: 0 };
 });

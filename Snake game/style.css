@@ -4,58 +4,94 @@
 }
 
 .body {
-  /* background: url("../Snake game/bg.jpg"); */
   min-height: 100vh;
-  background-repeat: no-repeat;
-  background-size: 100vw 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #f5f5f5;
 }
 
 #board {
-  background: linear-gradient(rgb(240, 227, 109), rgb(133, 115, 235));
+  background: linear-gradient(#f7cac9, #92a8d1);
   width: 90vmin;
   height: 92vmin;
   border: 2px solid black;
   display: grid;
   grid-template-rows: repeat(18, 1fr);
   grid-template-columns: repeat(18, 1fr);
+  margin-bottom: 20px;
 }
 
 .head {
-  background: linear-gradient(red, yellow);
+  background: linear-gradient(to right, #ff6f61, #ffcc5c);
   border: 2px solid white;
   transform: scale(1.02);
   border-radius: 8px;
 }
 
 .snake {
-  background-color: purple;
+  background-color: #6b5b95;
   border: 0.25vmin solid wheat;
   border-radius: 12px;
 }
 
 .food {
-  background: linear-gradient(red, purple);
+  background: linear-gradient(to right, #88b04b, #ffa07a);
   border: 0.25vmin solid black;
   border-radius: 8px;
 }
 
-#scoreBox {
-  position: absolute;
-  font-family: "Times New Roman", Times, serif;
-  font-weight: 600;
-  top: 60px;
-  right: 200px;
-  font-size: 30px;
-}
-
+#scoreBox,
 #highscoreBox {
   position: absolute;
   font-family: "Times New Roman", Times, serif;
   font-weight: 600;
-  top: 90px;
-  right: 140px;
-  font-size: 30px;
+  top: 20px;
+  right: 20px;
+  font-size: 20px;
+}
+
+#highscoreBox {
+  top: 60px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.middle-controls {
+  display: flex;
+  gap: 10px;
+}
+
+.middle-controls button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.controls button {
+  background-color: #6b5b95;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  border-radius: 50%;
+  cursor: pointer;
+  outline: none;
+}
+
+.controls button:hover {
+  background-color: #88b04b;
+}
+
+#center {
+  background-color: #f7cac9;
 }
