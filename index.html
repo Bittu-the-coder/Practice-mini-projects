@@ -3,109 +3,668 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mini Projects</title>
+    <title>Mini Projects Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-      body,
-      h1,
-      p,
-      a {
-        margin: 0;
-        padding: 0;
-        text-decoration: none;
-        font-family: "Arial", sans-serif;
-      }
-
-      body {
-        background-color: #f0f8ff;
-        color: #333;
-        font-size: 16px;
-        line-height: 1.6;
-        text-align: center;
-        padding: 20px;
-      }
-
-      .container {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-      }
-
-      h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        color: #007bff;
-      }
-
-      p {
-        font-size: 1.2rem;
-        margin-bottom: 20px;
-        color: #555;
-      }
-
-      a {
-        display: inline-block;
-        margin: 10px;
-        padding: 12px 20px;
-        background-color: #007bff;
-        color: #fff;
-        border-radius: 8px;
-        transition: background-color 0.3s, transform 0.2s;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-      }
-
-      a:hover {
-        background-color: #0056b3;
-        transform: translateY(-3px);
-      }
-
-      a:focus {
-        outline: 2px solid #0056b3;
-      }
-
-      @media (max-width: 600px) {
-        a {
-          display: block;
-          width: 100%;
-          margin: 10px 0;
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
         }
+        50% {
+          transform: translateY(-20px) rotate(10deg);
+        }
+      }
+      .float-animation {
+        animation: float 5s ease-in-out infinite;
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 15px rgba(147, 51, 234, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 30px rgba(147, 51, 234, 0.9);
+        }
+      }
+      .glow-effect:hover {
+        animation: pulse-glow 1.5s infinite;
+      }
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      .spin-animation {
+        animation: spin 15s linear infinite;
+      }
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .bounce-animation {
+        animation: bounce 3s ease-in-out infinite;
+      }
+      .scroll-reveal {
+        opacity: 0;
+        transform: translateY(60px);
+        transition: all 0.8s ease-out;
+      }
+      .scroll-reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 30px solid transparent;
+        border-right: 30px solid transparent;
+        border-bottom: 50px solid rgba(147, 51, 234, 0.2);
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
       }
     </style>
   </head>
-  <body>
-    <div class="container">
-      <h1>Explore a Collection of Engaging Mini Projects</h1>
-      <p>
-        Discover a curated selection of interactive and educational mini
-        projects designed to enhance your learning experience. From calculators
-        and calendars to countdowns and games, each project showcases creative
-        solutions and innovative ideas. Dive into various fun tools like the 3D
-        Cup, QR Code Generator, and Snake Game, or improve your productivity
-        with the Dictionary and Quiz apps. Perfect for learners and developers,
-        these projects offer a hands-on approach to understanding coding
-        concepts and building practical skills. Explore, experiment, and enjoy
-        learning with this diverse range of mini projects!
-      </p>
-      <a href="./calculator/index.html">Calculator</a>
-      <a href="./calendar/index1.html">Calendar</a>
-      <a href="./clock/index1.html">Clock 1</a>
-      <a href="./clock/index2.html">Clock 2</a>
-      <a href="./clock/index3.html">Clock 3</a>
-      <a href="./countDown/index1.html">Countdown</a>
-      <a href="./cup/index.html">3D Cup</a>
-      <a href="./Dictionary/index1.html">Dictionary</a>
-      <a href="./Educationyan-quiz/index.html">Educationyan Quiz app</a>
-      <a href="./imgEffect/index1.html">Image Effect 1</a>
-      <a href="./imgEffect/index2.html">Image Effect 2</a>
-      <a href="./loader/index1.html">Loader</a>
-      <a href="./navBar/index1.html">Navbar 1</a>
-      <a href="./navBar/index2.html">Navbar 2</a>
-      <a href="./piano/index.html">Piano</a>
-      <a href="./popup modal/index.html">Popup Modal</a>
-      <a href="./QR code/index.html">QR Code Generator</a>
-      <a href="./Quiz/index.html">Quiz type Interface</a>
-      <a href="./Quotes/index1.html">Daily New Quotes</a>
-      <a href="./Snake game/index.html">Snake Game</a>
+  <body
+    class="bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 min-h-screen text-white overflow-x-hidden relative"
+  >
+    <!-- Background Effects -->
+    <div
+      class="absolute top-20 left-10 w-20 h-20 bg-gradient-to-r from-purple-500 to-indigo-500 opacity-20 rounded-full blur-3xl float-animation md:w-24 md:h-24"
+    ></div>
+    <div
+      class="absolute bottom-40 right-20 w-24 h-24 bg-gradient-to-r from-pink-500 to-purple-500 opacity-20 rounded-full blur-3xl float-animation delay-1000 md:w-32 md:h-32"
+    ></div>
+    <div
+      class="absolute top-1/3 left-1/4 w-16 h-16 bg-gradient-to-r from-cyan-500 to-blue-500 opacity-15 rounded-full blur-2xl spin-animation md:w-20 md:h-20"
+    ></div>
+    <div class="triangle top-10 right-40 opacity-30 blur-sm md:right-60"></div>
+    <div
+      class="triangle bottom-20 left-20 opacity-20 blur-sm spin-animation md:left-40"
+    ></div>
+    <div
+      class="absolute top-1/2 right-1/3 w-12 h-12 bg-gradient-to-r from-indigo-500 to-purple-500 opacity-10 rounded-full bounce-animation md:w-16 md:h-16"
+    ></div>
+
+    <!-- Navigation Bar -->
+    <nav
+      class="fixed top-0 left-0 w-full bg-gray-800/80 backdrop-blur-md shadow-lg z-50"
+    >
+      <div
+        class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center"
+      >
+        <h2
+          class="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"
+        >
+          Mini Projects Hub
+        </h2>
+        <div class="flex flex-col md:flex-row gap-4 md:gap-6 mt-4 md:mt-0">
+          <a
+            href="#home"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >Home</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >Projects</a
+          >
+          <a
+            href="#about"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >About</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >Contact</a
+          >
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div
+      class="container max-w-6xl mx-auto pt-20 md:pt-24 pb-12 px-4 md:px-6 relative"
+    >
+      <!-- Hero Section -->
+      <section id="home" class="text-center mb-12 md:mb-16">
+        <h1
+          class="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-6 animate-fade-in"
+        >
+          Welcome to Mini Projects Hub
+        </h1>
+        <p
+          class="text-lg md:text-xl text-gray-300 mb-8 bg-gray-800/80 p-4 md:p-6 rounded-xl shadow-lg backdrop-blur-sm scroll-reveal"
+        >
+          Explore a curated collection of interactive and educational mini
+          projects designed to boost your coding skills and creativity. Dive in
+          and start building today!
+        </p>
+        <button
+          class="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 md:px-8 py-2 md:py-3 rounded-full text-base md:text-lg font-semibold hover:scale-105 hover:shadow-lg glow-effect transition-all duration-300"
+        >
+          Get Started
+        </button>
+      </section>
+
+      <!-- Search Bar -->
+      <section class="mb-12 md:mb-16">
+        <input
+          type="text"
+          id="search"
+          placeholder="Search Projects..."
+          class="w-full max-w-md mx-auto block p-3 md:p-4 rounded-full bg-gray-800/90 text-white border border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 text-sm md:text-base"
+          onkeyup="searchProjects()"
+        />
+      </section>
+
+      <!-- Stats Section -->
+      <section
+        class="flex flex-col md:flex-row justify-center gap-6 md:gap-8 mb-12 md:mb-16 scroll-reveal"
+      >
+        <div
+          class="bg-gradient-to-br from-purple-700 to-indigo-700 p-4 md:p-6 rounded-lg shadow-lg text-center transform hover:scale-105 hover:rotate-2 transition-all duration-300"
+        >
+          <p class="text-2xl md:text-3xl font-bold">25+</p>
+          <p class="text-xs md:text-sm text-gray-300">Projects</p>
+        </div>
+        <div
+          class="bg-gradient-to-br from-indigo-700 to-blue-700 p-4 md:p-6 rounded-lg shadow-lg text-center transform hover:scale-105 hover:-rotate-2 transition-all duration-300"
+        >
+          <p class="text-2xl md:text-3xl font-bold">1500+</p>
+          <p class="text-xs md:text-sm text-gray-300">Users</p>
+        </div>
+        <div
+          class="bg-gradient-to-br from-pink-700 to-purple-700 p-4 md:p-6 rounded-lg shadow-lg text-center transform hover:scale-105 hover:rotate-2 transition-all duration-300"
+        >
+          <p class="text-2xl md:text-3xl font-bold">5★</p>
+          <p class="text-xs md:text-sm text-gray-300">Rating</p>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects" class="mb-12 md:mb-16">
+        <h2
+          class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-8 md:mb-10 text-center scroll-reveal"
+        >
+          Our Projects
+        </h2>
+        <div
+          id="project-grid"
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6"
+        >
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Calculator</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                A sleek, functional calculator for all your basic math needs.
+              </p>
+            </div>
+            <a
+              href="./calculator/index.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-purple-600 to-pink-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Calendar</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Interactive calendar to track dates and events.
+              </p>
+            </div>
+            <a
+              href="./calendar/index1.html"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Clock 1</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                A minimalist digital clock with real-time updates.
+              </p>
+            </div>
+            <a
+              href="./clock/index1.html"
+              class="mt-4 bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-blue-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Clock 2</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Analog clock design with smooth animations.
+              </p>
+            </div>
+            <a
+              href="./clock/index2.html"
+              class="mt-4 bg-gradient-to-r from-indigo-500 to-blue-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-purple-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Clock 3</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Fancy clock with customizable themes.
+              </p>
+            </div>
+            <a
+              href="./clock/index3.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-pink-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Countdown</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Set timers for events with a sleek countdown display.
+              </p>
+            </div>
+            <a
+              href="./countDown/index1.html"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-cyan-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">3D Cup</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Interactive 3D cup model with rotation effects.
+              </p>
+            </div>
+            <a
+              href="./cup/index.html"
+              class="mt-4 bg-gradient-to-r from-cyan-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-blue-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Dictionary</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Look up words with definitions and examples.
+              </p>
+            </div>
+            <a
+              href="./Dictionary/index1.html"
+              class="mt-4 bg-gradient-to-r from-blue-500 to-purple-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-purple-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">
+                Educationyan Quiz App
+              </h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Test your knowledge with fun quizzes.
+              </p>
+            </div>
+            <a
+              href="./Educationyan-quiz/index.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-cyan-600 to-blue-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Image Effect 1</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Apply cool filters to your images.
+              </p>
+            </div>
+            <a
+              href="./imgEffect/index1.html"
+              class="mt-4 bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Image Effect 2</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Advanced image manipulation tool.
+              </p>
+            </div>
+            <a
+              href="./imgEffect/index2.html"
+              class="mt-4 bg-gradient-to-r from-blue-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-purple-600 to-pink-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Loader</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Custom loading animations for your site.
+              </p>
+            </div>
+            <a
+              href="./loader/index1.html"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Navbar 1</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Responsive navigation bar design.
+              </p>
+            </div>
+            <a
+              href="./navBar/index1.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-pink-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Navbar 2</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Animated navbar with dropdowns.
+              </p>
+            </div>
+            <a
+              href="./navBar/index2.html"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-blue-600 to-cyan-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Piano</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Play a virtual piano with sound effects.
+              </p>
+            </div>
+            <a
+              href="./piano/index.html"
+              class="mt-4 bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Popup Modal</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Create stylish popup modals.
+              </p>
+            </div>
+            <a
+              href="./popup modal/index.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-cyan-600 to-indigo-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">
+                QR Code Generator
+              </h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Generate QR codes for any URL.
+              </p>
+            </div>
+            <a
+              href="./QR code/index.html"
+              class="mt-4 bg-gradient-to-r from-cyan-500 to-indigo-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-purple-600 to-blue-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">
+                Quiz Type Interface
+              </h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Build your own quiz interface.
+              </p>
+            </div>
+            <a
+              href="./Quiz/index.html"
+              class="mt-4 bg-gradient-to-r from-purple-500 to-blue-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-pink-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Daily New Quotes</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Get inspired with daily quotes.
+              </p>
+            </div>
+            <a
+              href="./Quotes/index1.html"
+              class="mt-4 bg-gradient-to-r from-pink-500 to-purple-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+          <div
+            class="card bg-gradient-to-br from-indigo-600 to-blue-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+          >
+            <div>
+              <h3 class="text-lg md:text-xl font-semibold">Snake Game</h3>
+              <p class="text-xs md:text-sm text-gray-200 mt-2">
+                Classic snake game with modern twists.
+              </p>
+            </div>
+            <a
+              href="./Snake game/index.html"
+              class="mt-4 bg-gradient-to-r from-indigo-500 to-blue-500 px-4 py-2 rounded-full text-xs md:text-sm font-semibold hover:scale-110 transition-all duration-300 text-center"
+              >View</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- About Section -->
+      <section id="about" class="mb-12 md:mb-16 scroll-reveal">
+        <h2
+          class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-8 md:mb-10 text-center"
+        >
+          About Us
+        </h2>
+        <div
+          class="bg-gray-800/80 p-6 md:p-8 rounded-xl shadow-lg backdrop-blur-sm"
+        >
+          <p class="text-base md:text-lg text-gray-300 mb-4">
+            Mini Projects Hub is a platform dedicated to helping developers and
+            learners explore coding through hands-on projects. Our mission is to
+            inspire creativity and provide practical tools for skill-building.
+          </p>
+          <p class="text-base md:text-lg text-gray-300">
+            Whether you're a beginner or an experienced coder, our diverse range
+            of projects offers something for everyone. Join our community and
+            start creating today!
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact Section -->
+      <section id="contact" class="mb-12 md:mb-16 scroll-reveal">
+        <h2
+          class="text-3xl md:text-4xl font-bold bg-gradient-to-r from-indigo-400 to-purple-400 bg-clip-text text-transparent mb-8 md:mb-10 text-center"
+        >
+          Get in Touch
+        </h2>
+        <form
+          class="bg-gray-800/80 p-6 md:p-8 rounded-xl shadow-lg backdrop-blur-sm max-w-lg mx-auto"
+        >
+          <input
+            type="text"
+            placeholder="Your Name"
+            class="w-full p-3 md:p-4 mb-4 rounded-lg bg-gray-700 text-white border border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 text-sm md:text-base"
+          />
+          <input
+            type="email"
+            placeholder="Your Email"
+            class="w-full p-3 md:p-4 mb-4 rounded-lg bg-gray-700 text-white border border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 text-sm md:text-base"
+          />
+          <textarea
+            placeholder="Your Message"
+            class="w-full p-3 md:p-4 mb-4 rounded-lg bg-gray-700 text-white border border-purple-500 focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 text-sm md:text-base"
+            rows="4"
+          ></textarea>
+          <button
+            type="submit"
+            class="bg-gradient-to-r from-purple-600 to-indigo-600 px-6 md:px-8 py-2 md:py-3 rounded-full text-base md:text-lg font-semibold hover:scale-105 hover:shadow-lg glow-effect transition-all duration-300 w-full"
+          >
+            Send Message
+          </button>
+        </form>
+      </section>
+
+      <!-- Modal -->
+      <div
+        id="modal"
+        class="fixed inset-0 bg-black/80 flex items-center justify-center hidden z-50"
+      >
+        <div
+          class="bg-gradient-to-br from-gray-800 to-indigo-900 p-6 md:p-8 rounded-xl shadow-2xl max-w-md w-full transform scale-95 transition-all duration-300"
+        >
+          <h3 class="text-xl md:text-2xl font-bold text-white mb-4">
+            Project Info
+          </h3>
+          <p class="text-sm md:text-base text-gray-300 mb-6">
+            Click a project card to learn more about it! This is a placeholder
+            modal for additional interactivity.
+          </p>
+          <button
+            onclick="closeModal()"
+            class="bg-gradient-to-r from-purple-600 to-indigo-600 px-4 md:px-6 py-2 rounded-full text-sm md:text-base text-white hover:scale-105 transition-all duration-300"
+          >
+            Close
+          </button>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <footer
+        class="text-center py-6 md:py-8 text-gray-400 border-t border-gray-800"
+      >
+        <p class="text-sm md:text-base">
+          © 2025 Mini Projects Hub | Built with
+          <span class="text-purple-400">Passion</span> &
+          <span class="text-indigo-400">Code</span>
+        </p>
+        <div
+          class="mt-4 flex flex-col md:flex-row justify-center gap-4 md:gap-6"
+        >
+          <a
+            href="#"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >Twitter</a
+          >
+          <a
+            href="#"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >GitHub</a
+          >
+          <a
+            href="#"
+            class="hover:text-purple-400 transition-colors text-sm md:text-base"
+            >LinkedIn</a
+          >
+        </div>
+      </footer>
     </div>
+
+    <!-- JavaScript for Interactivity -->
+    <script>
+      // Modal Functionality (for card clicks, not affecting View buttons)
+      const cards = document.querySelectorAll(".card");
+      const modal = document.getElementById("modal");
+      cards.forEach((card) => {
+        card.addEventListener("click", (e) => {
+          if (e.target.tagName !== "A") {
+            // Prevent modal if clicking View button
+            e.preventDefault();
+            modal.classList.remove("hidden");
+            modal.querySelector(".scale-95").classList.remove("scale-95");
+          }
+        });
+      });
+      function closeModal() {
+        modal.classList.add("hidden");
+      }
+
+      // Search Functionality
+      function searchProjects() {
+        const input = document.getElementById("search").value.toLowerCase();
+        const projects = document.querySelectorAll(".card");
+        projects.forEach((project) => {
+          const text = project.textContent.toLowerCase();
+          project.style.display = text.includes(input) ? "" : "none";
+        });
+      }
+
+      // Scroll Reveal Animation
+      const scrollElements = document.querySelectorAll(".scroll-reveal");
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+            }
+          });
+        },
+        { threshold: 0.2 }
+      );
+      scrollElements.forEach((el) => observer.observe(el));
+    </script>
   </body>
 </html>
