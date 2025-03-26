@@ -4,47 +4,87 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cal-C</title>
-    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
-  <body>
-    <h2>Welcome to Cal-C</h2>
-    <div class="container">
-      <input id="inputBox" type="text" placeholder="0" />
-      <div class="row">
-        <button class="opertor">AC</button>
-        <button class="opertor">DEL</button>
-        <button class="opertor">/</button>
-        <button class="opertor">**</button>
+  <body
+    class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+  >
+    <div
+      class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
+    >
+      <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
+        Welcome to Cal-C
+      </h2>
+      <div class="container space-y-4">
+        <input
+          id="inputBox"
+          type="text"
+          placeholder="0"
+          class="w-full p-2 text-right border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+        />
+        <div class="grid grid-cols-4 gap-2">
+          <button
+            class="opertor bg-red-500 text-white rounded hover:bg-red-600"
+          >
+            AC
+          </button>
+          <button
+            class="opertor bg-gray-500 text-white rounded hover:bg-gray-600"
+          >
+            DEL
+          </button>
+          <button
+            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            /
+          </button>
+          <button
+            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            **
+          </button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">7</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">8</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">9</button>
+          <button
+            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            *
+          </button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">4</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">5</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">6</button>
+          <button
+            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            +
+          </button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">1</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">2</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">3</button>
+          <button
+            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+          >
+            -
+          </button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">00</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">0</button>
+          <button class="bg-gray-200 rounded hover:bg-gray-300">.</button>
+          <button
+            class="equalBtn bg-green-500 text-white rounded hover:bg-green-600"
+          >
+            =
+          </button>
+        </div>
       </div>
-      <div class="row">
-        <button>7</button>
-        <button>8</button>
-        <button>9</button>
-        <button class="opertor">*</button>
-      </div>
-      <div class="row">
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button class="opertor">+</button>
-      </div>
-      <div class="row">
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button class="opertor">-</button>
-      </div>
-      <div class="row">
-        <button>00</button>
-        <button>0</button>
-        <button>.</button>
-        <button class="equalBtn">=</button>
-      </div>
+      <br />
+      <p class="text-gray-600">Here ** = Exponent</p>
+      <p class="text-gray-600">Here * = Multiply</p>
+      <p class="text-gray-600">Here / = Divide</p>
     </div>
-    <br />
-    <p>Here ** = Exponent</p>
-    <p>Here * = Multiply</p>
-    <p>Here / = Divide</p>
     <script src="app.js"></script>
   </body>
 </html>

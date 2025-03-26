@@ -71,6 +71,16 @@
         position: absolute;
         animation: float 6s ease-in-out infinite;
       }
+      #nav-menu {
+        transition: transform 0.3s ease-in-out;
+      }
+      #nav-menu.hidden {
+        transform: translateX(100%);
+      }
+      .inRow {
+        display: flex;
+        flex-wrap: wrap;
+      }
     </style>
   </head>
   <body
@@ -99,14 +109,35 @@
       class="fixed top-0 left-0 w-full bg-gray-800/80 backdrop-blur-md shadow-lg z-50"
     >
       <div
-        class="max-w-6xl mx-auto px-4 py-4 flex flex-col md:flex-row justify-between items-center"
+        class="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center"
       >
         <h2
           class="text-xl md:text-2xl font-bold bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent"
         >
           Mini Projects Hub
         </h2>
-        <div class="flex flex-col md:flex-row gap-4 md:gap-6 mt-4 md:mt-0">
+        <!-- Hamburger Icon (Visible on Mobile) -->
+        <button id="hamburger" class="md:hidden text-white focus:outline-none">
+          <svg
+            class="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16m-7 6h7"
+            ></path>
+          </svg>
+        </button>
+        <!-- Navigation Links (Hidden on Mobile by Default) -->
+        <div
+          id="nav-menu"
+          class="hidden md:flex md:gap-6 absolute md:static top-16 right-0 w-64 md:w-auto bg-gray-800/90 md:bg-transparent p-6 md:p-0 flex-col md:flex-row gap-4 transition-transform transform md:transform-none lg:mr-24"
+        >
           <a
             href="#home"
             class="hover:text-purple-400 transition-colors text-sm md:text-base"
@@ -308,7 +339,7 @@
             >
           </div>
           <div
-            class="card bg-gradient-to-br from-blue-600 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
+            class="card bg-gradient-to-br from-blue-6 00 to-purple-700 text-white p-4 md:p-6 rounded-xl shadow-lg transform hover:scale-105 hover:shadow-2xl glow-effect transition-all duration-300 scroll-reveal flex flex-col justify-between"
           >
             <div>
               <h3 class="text-lg md:text-xl font-semibold">Dictionary</h3>
@@ -610,7 +641,7 @@
             >Twitter</a
           >
           <a
-            href="#"
+            href="http://github.com/bittu-the-coder"
             class="hover:text-purple-400 transition-colors text-sm md:text-base"
             >GitHub</a
           >
@@ -625,6 +656,14 @@
 
     <!-- JavaScript for Interactivity -->
     <script>
+      // Hamburger Menu Toggle
+      const hamburger = document.getElementById("hamburger");
+      const navMenu = document.getElementById("nav-menu");
+      hamburger.addEventListener("click", () => {
+        navMenu.classList.toggle("hidden");
+        navMenu.classList.toggle("inRow");
+      });
+
       // Modal Functionality (for card clicks, not affecting View buttons)
       const cards = document.querySelectorAll(".card");
       const modal = document.getElementById("modal");
