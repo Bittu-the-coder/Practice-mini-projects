@@ -4,18 +4,62 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cal-C</title>
-    <link
-      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0) rotate(0deg);
+        }
+        50% {
+          transform: translateY(-10px) rotate(5deg);
+        }
+      }
+      .float-animation {
+        animation: float 5s ease-in-out infinite;
+      }
+      @keyframes pulse-glow {
+        0%,
+        100% {
+          box-shadow: 0 0 10px rgba(147, 51, 234, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 20px rgba(147, 51, 234, 0.9);
+        }
+      }
+      .glow-effect:hover {
+        animation: pulse-glow 1.5s infinite;
+      }
+      .triangle {
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-bottom: 35px solid rgba(147, 51, 234, 0.2);
+        position: absolute;
+        animation: float 6s ease-in-out infinite;
+      }
+    </style>
   </head>
   <body
-    class="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500"
+    class="bg-gradient-to-br from-gray-900 via-indigo-900 to-purple-900 min-h-screen flex items-center justify-center p-4 md:p-6 relative overflow-hidden"
   >
+    <!-- Background Effects -->
     <div
-      class="bg-white p-6 rounded-lg shadow-lg transform transition-transform hover:scale-105"
+      class="absolute top-10 left-10 w-16 h-16 bg-gradient-to-r from-purple-500 to-indigo-500 opacity-20 rounded-full blur-2xl float-animation md:w-20 md:h-20"
+    ></div>
+    <div
+      class="absolute bottom-10 right-10 w-20 h-20 bg-gradient-to-r from-pink-500 to-purple-500 opacity-20 rounded-full blur-2xl float-animation delay-1000 md:w-24 md:h-24"
+    ></div>
+    <div class="triangle top-20 right-20 opacity-30 blur-sm md:right-40"></div>
+
+    <!-- Calculator Container -->
+    <div
+      class="bg-gray-800/80 p-4 md:p-6 rounded-xl shadow-lg backdrop-blur-sm transform hover:scale-105 transition-all duration-300 max-w-sm w-full md:max-w-md"
     >
-      <h2 class="text-2xl font-bold text-center text-gray-800 mb-4">
+      <h2
+        class="text-xl md:text-2xl font-bold text-center bg-gradient-to-r from-purple-400 to-indigo-400 bg-clip-text text-transparent mb-4"
+      >
         Welcome to Cal-C
       </h2>
       <div class="container space-y-4">
@@ -23,68 +67,188 @@
           id="inputBox"
           type="text"
           placeholder="0"
-          class="w-full p-2 text-right border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+          class="w-full p-3 md:p-4 text-right bg-gray-700 text-white border border-purple-500 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-400 transition-all duration-300 text-sm md:text-base"
+          readonly
         />
-        <div class="grid grid-cols-4 gap-2">
+        <div class="grid grid-cols-4 gap-2 md:gap-3">
           <button
-            class="opertor bg-red-500 text-white rounded hover:bg-red-600"
+            onclick="clearInput()"
+            class="opertor bg-gradient-to-br from-red-600 to-red-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             AC
           </button>
           <button
-            class="opertor bg-gray-500 text-white rounded hover:bg-gray-600"
+            onclick="deleteLast()"
+            class="opertor bg-gradient-to-br from-gray-600 to-gray-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             DEL
           </button>
           <button
-            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+            onclick="appendToInput('/')"
+            class="opertor bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             /
           </button>
           <button
-            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+            onclick="appendToInput('**')"
+            class="opertor bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             **
           </button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">7</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">8</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">9</button>
           <button
-            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+            onclick="appendToInput('7')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            7
+          </button>
+          <button
+            onclick="appendToInput('8')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            8
+          </button>
+          <button
+            onclick="appendToInput('9')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            9
+          </button>
+          <button
+            onclick="appendToInput('*')"
+            class="opertor bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             *
           </button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">4</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">5</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">6</button>
           <button
-            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+            onclick="appendToInput('4')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            4
+          </button>
+          <button
+            onclick="appendToInput('5')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            5
+          </button>
+          <button
+            onclick="appendToInput('6')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            6
+          </button>
+          <button
+            onclick="appendToInput('+')"
+            class="opertor bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             +
           </button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">1</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">2</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">3</button>
           <button
-            class="opertor bg-blue-500 text-white rounded hover:bg-blue-600"
+            onclick="appendToInput('1')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            1
+          </button>
+          <button
+            onclick="appendToInput('2')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            2
+          </button>
+          <button
+            onclick="appendToInput('3')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            3
+          </button>
+          <button
+            onclick="appendToInput('-')"
+            class="opertor bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             -
           </button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">00</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">0</button>
-          <button class="bg-gray-200 rounded hover:bg-gray-300">.</button>
           <button
-            class="equalBtn bg-green-500 text-white rounded hover:bg-green-600"
+            onclick="appendToInput('00')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            00
+          </button>
+          <button
+            onclick="appendToInput('0')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            0
+          </button>
+          <button
+            onclick="appendToInput('.')"
+            class="bg-gradient-to-br from-gray-500 to-gray-600 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg transition-all duration-300 text-sm md:text-base"
+          >
+            .
+          </button>
+          <button
+            onclick="calculate()"
+            class="equalBtn bg-gradient-to-br from-green-600 to-green-700 text-white p-3 md:p-4 rounded-lg hover:scale-110 hover:shadow-lg glow-effect transition-all duration-300 text-sm md:text-base"
           >
             =
           </button>
         </div>
       </div>
-      <br />
-      <p class="text-gray-600">Here ** = Exponent</p>
-      <p class="text-gray-600">Here * = Multiply</p>
-      <p class="text-gray-600">Here / = Divide</p>
+      <div class="mt-4 text-gray-400 text-xs md:text-sm space-y-1">
+        <p>** = Exponent</p>
+        <p>* = Multiply</p>
+        <p>/ = Divide</p>
+      </div>
     </div>
-    <script src="app.js"></script>
+
+    <!-- JavaScript Logic -->
+    <script>
+      const inputBox = document.getElementById("inputBox");
+
+      function appendToInput(value) {
+        if (inputBox.value === "0" && value !== ".") {
+          inputBox.value = value;
+        } else {
+          inputBox.value += value;
+        }
+      }
+
+      function clearInput() {
+        inputBox.value = "0";
+      }
+
+      function deleteLast() {
+        inputBox.value = inputBox.value.slice(0, -1);
+        if (inputBox.value === "") {
+          inputBox.value = "0";
+        }
+      }
+
+      function calculate() {
+        try {
+          // Replace ** with Math.pow for evaluation
+          let expression = inputBox.value.replace(/\*\*/g, "**");
+          inputBox.value = eval(expression);
+          if (inputBox.value === "Infinity" || inputBox.value === "-Infinity") {
+            inputBox.value = "Error";
+          }
+        } catch (error) {
+          inputBox.value = "Error";
+        }
+      }
+
+      // Optional: Add keyboard support
+      document.addEventListener("keydown", (event) => {
+        const key = event.key;
+        if (/[0-9]/.test(key)) appendToInput(key);
+        if (key === ".") appendToInput(".");
+        if (key === "+") appendToInput("+");
+        if (key === "-") appendToInput("-");
+        if (key === "*") appendToInput("*");
+        if (key === "/") appendToInput("/");
+        if (key === "Enter") calculate();
+        if (key === "Backspace") deleteLast();
+        if (key === "Escape") clearInput();
+      });
+    </script>
   </body>
 </html>
