@@ -704,36 +704,37 @@
     <!-- JavaScript for Interactivity -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        fetch("chatbot.html")
-          .then((response) => response.text())
-          .then((html) => {
-            // Create a container
-            const container = document.createElement("div");
-            container.innerHTML = html;
-
-            // Append HTML elements
-            document.body.appendChild(container);
-
-            // Extract scripts from the fetched HTML
-            const scripts = container.querySelectorAll("script");
-            scripts.forEach((oldScript) => {
-              // Create a new script element
-              const newScript = document.createElement("script");
-
-              // Copy attributes
-              Array.from(oldScript.attributes).forEach((attr) => {
-                newScript.setAttribute(attr.name, attr.value);
-              });
-
-              // Copy content
-              newScript.textContent = oldScript.textContent;
-
-              // Replace old script with new one that will execute
-              oldScript.parentNode.replaceChild(newScript, oldScript);
-            });
-          })
-          .catch((error) => console.error("Error loading chatbot:", error));
+        loadChatbot(); // Moved to separate function for better organization
       });
+
+      async function loadChatbot() {
+        try {
+          const response = await fetch("chatbot.html");
+          if (!response.ok) throw new Error("Failed to load chatbot");
+
+          const html = await response.text();
+          const container = document.createElement("div");
+          container.id = "chatbot-container";
+          container.innerHTML = html;
+
+          document.body.appendChild(container);
+
+          // Handle scripts with defer to ensure proper loading
+          const scripts = container.querySelectorAll("script");
+          scripts.forEach((oldScript) => {
+            const newScript = document.createElement("script");
+            Array.from(oldScript.attributes).forEach((attr) => {
+              newScript.setAttribute(attr.name, attr.value);
+            });
+            newScript.defer = true;
+            newScript.textContent = oldScript.textContent;
+            oldScript.parentNode.replaceChild(newScript, oldScript);
+          });
+        } catch (error) {
+          console.error("Error loading chatbot:", error);
+        }
+      }
+
       // Hamburger Menu Toggle
       const hamburger = document.getElementById("hamburger");
       const navMenu = document.getElementById("nav-menu");
